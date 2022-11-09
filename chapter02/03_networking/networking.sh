@@ -31,6 +31,9 @@ kubectl exec blue-green-app -c green-app -- curl -vs localhost:8080/hello
 # blue-app 컨테이너 -> red-app 컨테이너 /rose, /hello 요청 실행
 export RED_POD_IP=$(kubectl get pod red-app -o jsonpath="{.status.podIP}")
 echo $RED_POD_IP
+for /f "delims=" %A in ('kubectl get pod red-app -o jsonpath="{.status.podIP}"') do (set RED_POD_IP=%A)
+for /f "delims=" %A in ('java -version 2^>^&1 ^| find "version"') do (set test=%A)
+
 kubectl exec blue-green-app -c blue-app -- curl -vs $RED_POD_IP:8080/rose
 kubectl exec blue-green-app -c blue-app -- curl -vs $RED_POD_IP:8080/hello
 

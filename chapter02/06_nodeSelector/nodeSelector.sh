@@ -17,7 +17,7 @@ kubectl get node -L soil
 #   name: tree-app-1
 #   labels:
 #     element: tree
-# spec:
+# spec:``
 #   nodeSelector:
 #     soil: moist
 #   containers:
@@ -25,13 +25,15 @@ kubectl get node -L soil
 #     image: yoonjeong/green-app:1.0
 #     ports:
 #     - containerPort: 8081
-for i in {1..5}; 
+for i in {6..10}; 
 do kubectl run tree-app-$i \
 --labels="element=tree" \
 --image=yoonjeong/green-app:1.0 \
 --port=8081 \
 --overrides='{ "spec": { "nodeSelector": {"soil": "moist"} } }';
 done
+
+kubectl run tree-app-1 --labels="element=tree" --image=yoonjeong/green-app:1.0 --port=8081 --overrides='{"spec": {"nodeSelector": {"soil": "moist"}}}'
 
 # Pod이 배포된 노드 확인
 kubectl get pod -o wide
