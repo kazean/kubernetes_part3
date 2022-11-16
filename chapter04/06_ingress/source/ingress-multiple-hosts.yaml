@@ -42,3 +42,4 @@ spec:
             name: delivery
             port:
               number: 80
+#주석 아래로 하면 error 생겨서 삭제
