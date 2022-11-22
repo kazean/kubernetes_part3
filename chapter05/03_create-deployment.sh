@@ -30,7 +30,7 @@ curl localhost:8080
 
 # 2-6. order 파드 컨테이너에 설정된 PORT 환경변수 확인
 kubectl get pod -n order
-kubectl exec order-7bf8cbdf8c-w4rxp -n order -- printenv PORT
+kubectl exec order-1.0-5574f684d4-xwr2d -n order -- printenv PORT
 
 
 
@@ -51,7 +51,7 @@ curl localhost:8081
 
 # 3-6. payment 파드 컨테이너에 설정된 PORT 환경변수 확인
 kubectl get pod -n payment
-kubectl exec payment-6c79db77f-4fgw7 -n payment -- printenv PORT
+kubectl exec payment-1.0-858fb85f64-mdsn9 -n payment -- printenv PORT
 
 
 
@@ -72,7 +72,7 @@ curl localhost:8082
 
 # 4-6. delivery 파드 컨테이너에 설정된 PORT 환경변수 확인
 kubectl get pod -n delivery
-kubectl exec delivery-5c7d87cb9f-pxcl8 -n delivery -- printenv PORT
+kubectl exec delivery-1.0-696c45c8fd-r5zdf -n delivery -- printenv PORT
 
 
 
